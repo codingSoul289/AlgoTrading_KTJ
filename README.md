@@ -18,3 +18,5 @@
 **References**:
 
 1. Pyalgotrade tutorial - [Tutorial Link](https://gbeced.github.io/pyalgotrade/docs/v0.20/html/index.html#).
+2. Pyalgotrade Strategy Class Documentation - [Documentation Link](https://gbeced.github.io/pyalgotrade/docs/v0.20/html/strategy.html)
+3. Pyalgotrade Playlist - [Playlist Link](https://www.youtube.com/watch?v=JcHOOEhaDtU)
