@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
-# Linear regression
+
 class SMACrossOver(strategy.BacktestingStrategy):
     def __init__(self, feed,file_name, instrument,broker_cash,smaPeriod,broker_fee_percentage):
         strategy.BacktestingStrategy.__init__(self, feed)
