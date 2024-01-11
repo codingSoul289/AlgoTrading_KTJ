@@ -17,4 +17,4 @@
 
 **References**:
 
-1. Pyalgotrade tutorial - [https://gbeced.github.io/pyalgotrade/docs/v0.20/html/index.html#](https://gbeced.github.io/pyalgotrade/docs/v0.20/html/index.html#).
+1. Pyalgotrade tutorial - [Tutorial Link](https://gbeced.github.io/pyalgotrade/docs/v0.20/html/index.html#).
