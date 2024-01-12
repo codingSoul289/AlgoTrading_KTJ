@@ -13,6 +13,8 @@ class SMACrossOver(strategy.BacktestingStrategy):
         self.getBroker().setCash(broker_cash)
         self.getBroker().setCommission(TradePercentage(broker_fee_percentage))
         self.__sma = ma.SMA(self.__prices, smaPeriod)
+        self.positions = []
+        self.positions_cumulated = []
 
     def getSMA(self):
         return self.__sma
@@ -37,3 +39,13 @@ class SMACrossOver(strategy.BacktestingStrategy):
         # Check if we have to exit the position.
         elif not self.__position.exitActive() and cross.cross_below(self.__prices, self.__sma) > 0:
             self.__position.exitMarket()
+            
+        if(self.__position is not None):
+            self.positions.append(self.__position.getPnL())
+        else:
+            self.positions.append(0)
+
+        if(len(self.positions)==1):
+            self.positions_cumulated.append(self.positions[0])
+        if(len(self.positions)>1):
+            self.positions_cumulated.append(self.positions_cumulated[-1]+self.positions[-1])
