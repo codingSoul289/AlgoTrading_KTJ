@@ -40,6 +40,12 @@ class Linear_regression(strategy.BacktestingStrategy):
         hit_ratio=hits[1.0]/sum(hits)
         print(f'Hit Ratio:{hit_ratio}')
 
+
+        
+
+    def getSMA(self):
+        return self.__sma
+
     def onEnterCanceled(self, position):
         self.__position = None
 

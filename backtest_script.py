@@ -10,18 +10,13 @@ if __name__ == '__main__':
     # Load the data feed from the CSV file
     frequency = 6*60 # in minutes
     feed = GenericBarFeed(frequency*60)
-    path_to_file = "KDSH_Data/btc_6h.csv"
-    feed.addBarsFromCSV("btc-usdt", path_to_file)
-    feed_buy_hold = GenericBarFeed(frequency*60)
-    feed_buy_hold.addBarsFromCSV("btc-usdt", path_to_file)
+    feed.addBarsFromCSV("btc-usdt", "KDSH_Data/btc_4h.csv")
 
     #Create strategy
     broker_cash = 1000000
     commission_percentage = 0.15
-    strategy_buy_hold = buy_and_hold.BuyAndHoldStrategy(feed, "btc-usdt",broker_cash=broker_cash,broker_fee_percentage=commission_percentage/100)
-    # strategy = sma_crossover.SMACrossOver(feed, "btc-usdt",broker_cash=broker_cash, smaPeriod=30,broker_fee_percentage=commission_percentage/100)
-    # strategy = Linear_regression(feed, file_name=path_to_file,instrument="btc-usdt",broker_cash=broker_cash,broker_fee_percentage=commission_percentage/100)
-    strategy = sma_crossover2.SMACrossOver2(feed, "btc-usdt",broker_cash=broker_cash, smaPeriod1=19,smaPeriod2=341,broker_fee_percentage=commission_percentage/100)
+    strategy = sma_crossover.SMACrossOver(feed, "btc-usdt",broker_cash=broker_cash, smaPeriod=20,broker_fee_percentage=commission_percentage/100)
+    # strategy = sma_crossover2.SMACrossOver2(feed, "btc-usdt",broker_cash=broker_cash, smaPeriod1=75,smaPeriod2=100,broker_fee_percentage=commission_percentage/100)
 
     # Create Backtest instance and plotter
     bt = Backtest(broker_cash,commission_percentage,feed_buy_hold,"btc-usdt",strategy)
@@ -32,6 +27,7 @@ if __name__ == '__main__':
 
     # Run backtest
     bt.runBacktest()
+ 
 
     # Print metrics
     bt.printMetrics()
