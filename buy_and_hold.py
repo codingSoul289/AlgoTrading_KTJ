@@ -1,7 +1,5 @@
 from pyalgotrade import strategy
 from pyalgotrade.broker.backtesting import TradePercentage
-import datetime
-
 class BuyAndHoldStrategy(strategy.BacktestingStrategy):
 
     def __init__(self, feed, instrument,broker_cash,broker_fee_percentage):
