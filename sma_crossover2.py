@@ -77,6 +77,7 @@ class SMACrossOver2(strategy.BacktestingStrategy):
         elif not self.__position.exitActive() and cross.cross_below(self.__sma1, self.__sma2) > 0:
             self.__position.exitMarket()
 
-        if (self.__position is not None and self.__position.getEntryOrder().getAvgFillPrice() is not None) and bars[self.__instrument].getClose() < self.__position.getEntryOrder().getAvgFillPrice() * (1 - self.__stop_loss_percent):
-            self.info("Sell {} at {} due to stop-loss".format(self.__instrument, bars[self.__instrument].getClose()))
-            self.__position.exitMarket()
+        if(self.__position is not None):
+            if (not self.__position.exitActive() and self.__position is not None and self.__position.getEntryOrder().getAvgFillPrice() is not None) and bars[self.__instrument].getClose() < self.__position.getEntryOrder().getAvgFillPrice() * (1 - self.__stop_loss_percent):
+                self.info("Sell {} at {} due to stop-loss".format(self.__instrument, bars[self.__instrument].getClose()))
+                self.__position.exitMarket()
